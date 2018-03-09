@@ -12,7 +12,7 @@ if ('addEventListener' in document) {
     }, false)
 }
 
-import 'mint-ui/lib/style.css'
+import 'mint-ui/lib/style.min.css'
 import './config/rem.js'
 
 Vue.use(Mint)
