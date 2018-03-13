@@ -3,6 +3,8 @@ import Router from 'vue-router'
 
 const home = r => {require(['./../pages/home/home.vue'], r)}
 const login = r => {require(['./../pages/login/login.vue'], r)}
+const city = r => {require(['./../pages/city/city.vue'], r)}
+const msite = r => {require(['./../pages/msite/msite.vue'], r)}
 
 Vue.use(Router)
 
@@ -20,6 +22,19 @@ let routes = [
       path: '/login',
       name: 'login',
       component: login
+    },
+    {
+      path: '/city/:id',
+      name: 'city',
+      component: city
+    },
+    {
+      path: '/msite',
+      name: 'msite',
+      component: msite,
+      meta: {
+        // keepAlive: true
+      }
     }
   ]
 

@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import bus from './config/Bus.js'
 export default {
   name: 'App'
 }

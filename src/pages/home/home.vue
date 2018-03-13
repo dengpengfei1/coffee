@@ -1,23 +1,24 @@
 <template>
   <div class="cof_home">
-    <mt-header class="cof_header">
+    <!-- <mt-header class="cof_header">
       <mt-button to="/" slot="left" @click.native="reload">coffee</mt-button>
       <mt-button slot="right" @click.native="login">登录|注册</mt-button>
-    </mt-header>
+    </mt-header> -->
+    <coffee-header class="cof_header"></coffee-header>
     <!-- 定位城市 -->
     <section class="cof_now_position">
       <div class="cof_now_city clear">
         <span class="left cof_now_city_lt">当前定位城市</span>
         <span class="right cof_now_city_rt">定位不准确时, 请在列表中选择</span>
       </div>
-      <div class="cof_city_name clear" @click="jumpToCity(now_city)">
+      <div class="cof_city_name clear" @click="jumpToCity(now_city, now_id)">
         <span class="left">{{now_city ? now_city : '未定位'}}</span>
       </div>
     </section>
     <!-- 热门城市 -->
     <section class="cof_hot_city">
       <ul class="clear">
-        <li class="cof_city_item ellipsis" @click="chooseCity(item.name)" v-for="(item, index) in hot_city" :key="index">{{item.name}}</li>
+        <router-link tag = "li" :to="{name: 'city', params: {id: item.id}}" class="cof_city_item ellipsis" v-for="(item, index) in hot_city" :key="index">{{item.name}}</router-link>
       </ul>
     </section>
     <!-- 城市列表 -->
@@ -26,7 +27,7 @@
         <li class="cof_city_list" v-for="(value, key) in all_city" :key="key">
           <h4>{{ key }} <span v-if="key === 'A'">(按字母顺序排列)</span></h4>
           <ul class="clear">
-            <li class="cof_city_item ellipsis" @click="chooseCity(item.name)" v-for="(item, index) in value" :key="index">{{item.name}}</li>
+            <router-link tag="li" :to="{name: 'city', params: {id: item.id}}" class="cof_city_item ellipsis" v-for="(item, index) in value" :key="index">{{item.name}}</router-link>
           </ul>
         </li>
       </ul>
@@ -37,13 +38,18 @@
 <script>
 import { http } from './../../config/http.js'
 import { Toast } from 'mint-ui'
+import coffeeHeader from './../../components/header.vue'
 export default {
   data: function () {
     return {
       now_city: '',
       hot_city: '',
-      all_city: ''
+      all_city: '',
+      now_id: ''
     }
+  },
+  components: {
+    coffeeHeader
   },
   mounted: function () {
     // 获取定位城市
@@ -63,6 +69,7 @@ export default {
         return
       }
       this.now_city = res.name
+      this.now_id = res.id
     })
 
     // 获取热门城市
@@ -105,25 +112,16 @@ export default {
     })
   },
   methods: {
-    // 刷新页面
-    reload () {
-      window.location.reload()
-    },
-    // 跳转到登录注册页面
-    login () {
-      this.$router.push({
-        path: '/login'
-      })
-    },
     // 跳转到选择区域页面
-    jumpToCity (city) {
+    jumpToCity (city, id) {
       if (city) {
-        console.log(city )
+        this.$router.push({
+          name: 'city',
+          params: {
+            id
+          }
+        })
       }
-    },
-    // 手动选择城市
-    chooseCity (city) {
-      this.now_city = city
     },
     //将获取的数据按照A-Z字母开头排序
     sortgroupcity(){

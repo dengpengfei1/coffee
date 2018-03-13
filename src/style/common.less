@@ -14,28 +14,27 @@ body, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, l
     outline: none;
   }
 }
-
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/  
 ::-webkit-scrollbar  
 {  
-  width: 0rem /* 0/20 */;  
-  height: 0rem /* 0/20 */;  
+  width: 0rem;  
+  height: 0rem;  
   background-color: #F5F5F5;  
 }  
 
 /*定义滚动条轨道 内阴影+圆角*/  
 ::-webkit-scrollbar-track  
 {  
-  -webkit-box-shadow: inset 0 0 .05rem /* 1/20 */ rgba(0,0,0,0);  
-  border-radius: .5rem /* 10/20 */;  
+  -webkit-box-shadow: inset 0 0 .05rem rgba(0,0,0,0);  
+  border-radius: .5rem;  
   background-color: #F5F5F5;  
 }  
 
 /*定义滑块 内阴影+圆角*/  
 ::-webkit-scrollbar-thumb  
 {  
-  border-radius: .5rem /* 10/20 */;  
-  -webkit-box-shadow: inset 0 0 .3rem /* 6/20 */ rgba(0,0,0,.3);  
+  border-radius: .5rem;  
+  -webkit-box-shadow: inset 0 0 .3rem rgba(0,0,0,.3);  
   background-color: #555;  
 }  
 
@@ -98,13 +97,18 @@ html,body{
 }
 
 @keyframes backOpacity{
- 0%   { opacity: 1 }
- 25%  { opacity: .5 }
- 50%  { opacity: 1 }
- 75%  { opacity: .5 }
- 100% { opacity: 1 }
+  0%   { opacity: 1 }
+  25%  { opacity: .5 }
+  50%  { opacity: 1 }
+  75%  { opacity: .5 }
+  100% { opacity: 1 }
 }
 
 .animation_opactiy{
   animation: backOpacity 2s ease-in-out infinite;
+}
+
+// mint-ui 样式重置
+.mint-header-title {
+  font-weight: bold !important;
 }
