@@ -5,6 +5,8 @@ const home = r => {require(['./../pages/home/home.vue'], r)}
 const login = r => {require(['./../pages/login/login.vue'], r)}
 const city = r => {require(['./../pages/city/city.vue'], r)}
 const msite = r => {require(['./../pages/msite/msite.vue'], r)}
+const food = r => {require(['./../pages/food/food.vue'], r)}
+const shop = r => {require(['./../pages/shop/shop.vue'], r)}
 
 Vue.use(Router)
 
@@ -35,6 +37,16 @@ let routes = [
       meta: {
         // keepAlive: true
       }
+    },
+    {
+      path: '/food',
+      name: 'food',
+      component: food
+    },
+    {
+      path: '/shop',
+      name: 'shop',
+      component: shop
     }
   ]
 
