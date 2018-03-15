@@ -7,6 +7,8 @@ const city = r => {require(['./../pages/city/city.vue'], r)}
 const msite = r => {require(['./../pages/msite/msite.vue'], r)}
 const food = r => {require(['./../pages/food/food.vue'], r)}
 const shop = r => {require(['./../pages/shop/shop.vue'], r)}
+const search = r => {require(['./../pages/search/search.vue'], r)}
+const searchGeohash = r => {require(['./../pages/search/geohash/geohash.vue'], r)}
 
 Vue.use(Router)
 
@@ -35,7 +37,7 @@ let routes = [
       name: 'msite',
       component: msite,
       meta: {
-        // keepAlive: true
+        keepAlive: true
       }
     },
     {
@@ -47,6 +49,18 @@ let routes = [
       path: '/shop',
       name: 'shop',
       component: shop
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: search,
+      children: [
+        {
+          path: 'geohash',
+          name: 'searchGeohash',
+          component: searchGeohash
+        }
+      ]
     }
   ]
 

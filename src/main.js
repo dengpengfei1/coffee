@@ -8,6 +8,7 @@ import FastClick from 'fastclick'
 import store from './store/index.js'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
+import 'font-awesome/css/font-awesome.min.css'
 
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
 

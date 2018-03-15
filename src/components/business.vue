@@ -38,10 +38,10 @@ export default {
 <style lang="less" scoped>
 .cof_business_link {
   color: #333;
-  height: 3.4rem;
+  height: 4rem;
   display: block;
   border-bottom: .05rem solid #ccc;
-  padding: .25rem 0;
+  padding: .5rem 0;
   &:last-child {
     border-bottom: none;
   }

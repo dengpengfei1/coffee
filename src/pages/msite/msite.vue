@@ -1,7 +1,7 @@
 <template>
   <div>
     <mt-header :title="msite_address" class="cof-header">
-      <router-link to="/" slot="left">
+      <router-link :to="{name: 'searchGeohash'}" slot="left">
         <mt-button icon="search">&nbsp;</mt-button>
       </router-link>
       <mt-button slot="right">登录|注册</mt-button>
@@ -34,10 +34,12 @@
     <section class="cof_near_food" v-infinite-scroll="loadMore"
       infinite-scroll-disabled="loading"
       :infinite-scroll-immediate-check="true"
-      infinite-scroll-distance="10">
+      infinite-scroll-distance="0">
       <div class="cof_near_food_title">附近店家</div>
       <business v-for="(item, index) in msite_near_food" :key="index" :data="item"></business>
     </section>
+    <!-- tabbar -->
+    <tabbar></tabbar>
   </div>
 </template>
 
@@ -45,12 +47,14 @@
 import { http } from './../../config/http.js'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import business from './../../components/business.vue'
+import tabbar from './../../components/tabbar.vue'
  
 export default {
   components: {
     swiper,
     swiperSlide,
-    business
+    business,
+    tabbar
   },
   data () {
     return {
@@ -151,6 +155,7 @@ export default {
   margin-top: .5rem;
   background-color: #fff;
   border-top: .05rem solid #ccc;
+  margin-bottom: 2rem;
   .cof_near_food_title {
     font-size: .6rem;
     padding: .25rem;
